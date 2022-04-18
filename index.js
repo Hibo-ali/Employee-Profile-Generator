@@ -10,6 +10,10 @@ const path = require("path");
 const fs = require("fs");
 const { run } = require("jest");
 
+//PATH
+const OUTPUT_DIR = path.resolve(__dirname, "output");
+const outputPath = path.join(OUTPUT_DIR, "team.html");
+
 //VALIDATION FUNCTIONS
 function validateInput(input) {
     if (input) {
