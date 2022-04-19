@@ -37,6 +37,6 @@ Please reach out to me via Github or Email:
 
 
 
-## SS: ![](assets/images/team-profile-ss)
+## SS: ![](images/team-profile-ss)
 
 ## URL: https://hibo-ali.github.io/Employee-Profile-Generator
