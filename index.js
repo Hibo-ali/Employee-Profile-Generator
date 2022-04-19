@@ -8,10 +8,10 @@ const path = require("path");
 
 // node modules
 const fs = require("fs");
-const { run } = require("jest");
+
 
 //PATH
-const OUTPUT_DIR = path.resolve(__dirname, "output");
+const OUTPUT_DIR = path.resolve(__dirname, "assets");
 const OUTPUTpath = path.join(OUTPUT_DIR, "team.html");
 
 
@@ -175,15 +175,19 @@ const engineersInfo = employeesInfo.filter(({ role }) => {
           ];
 
           // function to render HTML page file using file system 
-const writeFile = () => {
-    if (!fs.existsSync(OUTPUT_DIR)) {
-        fs.mkdirSync(OUTPUT_DIR);
-    } else {
-        fs.writeFileSync(OUTPUTpath, generateHTML(teamArray), 'utf-8');
-    }
-}; 
-
- }
+          const createTeam = generateHTML(teamArray);
+          fs.writeFile(OUTPUTpath, createTeam, function (err) {
+            if (err) throw err;
+            console.log(
+              "Success! See new 'team' file in the 'Assets' folder."
+            );
+          });
+        }
+      })
+      .catch((error) => {
+        if (error) throw error;
+      });
+  }
 
 
  
