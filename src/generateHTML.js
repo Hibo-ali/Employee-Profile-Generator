@@ -61,6 +61,29 @@ const generateTeamPage = function (team) {
     `
     };
 
+    // push array to page 
+    const html = [];
+    html.push(
+        ...employee 
+        .filter(employee => employee.getRole() === 'Manager')
+            .map(manager => generateManager(manager))
+            .join('')
+    )
+    html.push(
+        ...employee
+        .filter(employee => employee.getRole() === 'Engineer')
+            .map(engineer => generateEngineer(engineer))
+            .join('')
+    )
+    html.push(
+        ...employee
+        .filter(employee => employee.getRole() === 'Intern')
+            .map(intern => generateIntern(intern))
+            .join('')
+    )
+
+    return html.join('')
+}
 
 
 
