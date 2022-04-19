@@ -26,7 +26,7 @@ function runInquirer() {
           runInquirer();
         } else {
           //Filter out Managers and convert to objects
-          const managersData = employeesInformation.filter(({ role }) => {
+          const managersInfo = employeesInformation.filter(({ role }) => {
             return role == "Manager";
           });
 
@@ -36,6 +36,14 @@ function validateInput(input) {
       return true;
     }
     return "Please enter a value.";
+  }
+
+  function validateEmail(email) {
+    // console.log(/\S+@\S+\.\S+/.test(email));
+    if (/\S+@\S+\.\S+/.test(email)) {
+      return /\S+@\S+\.\S+/.test(email);
+    }
+    return "Please enter a valid email address.";
   }
 
 
@@ -55,19 +63,19 @@ const employeeQuestionsArray = [
   message: "Enter the employee's ID:",
   validate: validateInput,
 },
-  {
+{
     type: "list",
     name: "role",
     message: "Choose the employee's role:",
     choices: ["Manager", "Engineer", "Intern"],
-  },
+},
   {
     type: "input",
     name: "email",
     message: "Enter the employee's email:",
     validate: validateEmail,
-  },
-  {
+},
+{
     type: "input",
     name: "officeNumber",
     message: "Enter manager's office number:",
@@ -75,29 +83,41 @@ const employeeQuestionsArray = [
     when: function (response) {
       return response.role == "Manager";
     },
-  },
-  {
+},
+{
     type: "input",
     name: "github",
-    message: "Enter this engineer's GitHub username:",
+    message: "Enter engineer's GitHub username:",
     validate: validateInput,
     when: function (response) {
       return response.role == "Engineer";
     },
-  },
-  {
+},
+{
     type: "input",
     name: "school",
-    message: "Enter this intern's school name:",
+    message: "Enter intern's school name:",
     validate: validateInput,
     when: function (response) {
       return response.role == "Intern";
     },
-  },
-  {
+},
+{
     type: "list",
     name: "addAnother",
     message: "Add another employee?",
     choices: ["Yes, add another.", "No, render my new page."],
-  },
+},
 ];
+
+const managersInfo = [];
+
+managersInfo.forEach((manager) => {
+  const member = new Manager(
+    manager.name,
+    manager.id,
+    manager.email,
+    manager.officeNumber
+  );
+  managersInfo.push(member);
+});
