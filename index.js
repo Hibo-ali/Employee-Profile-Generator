@@ -111,8 +111,8 @@ const employeeQuestionsArray = [
 ];
 
 
-// managers data
-const managersInfo = [];
+// managers array data
+const managersQuestionsArray = [];
 
 managersInfo.forEach((manager) => {
   const member = new Manager(
@@ -121,7 +121,7 @@ managersInfo.forEach((manager) => {
     manager.email,
     manager.officeNumber
   );
-  managersInfo.push(member);
+  managersQuestionsArray.push(member);
 });
 
 
@@ -150,3 +150,35 @@ const engineersInfo = employeesInfo.filter(({ role }) => {
          const internsInfo = employeesInfo.filter(({ role }) => {
             return role == "Intern";
           });
+
+          const internsQuestionsArray = [];
+
+          internsInfo.forEach((intern) => {
+            const member = new Intern(
+              intern.name,
+              intern.id,
+              intern.email,
+              intern.school
+            );
+            internsQuestionsArray.push(member);
+          });
+  
+
+           // Connect all arrays
+        const teamArray = [
+            ...managersQuestionsArray,
+            ...engineersQuestionsArray,
+            ...internsQuestionsArray,
+          ];
+
+          // function to render HTML page file using file system 
+const writeFile = () => {
+    if (!fs.existsSync(OUTPUT_DIR)) {
+        fs.mkdirSync(OUTPUT_DIR);
+    } else {
+        fs.writeFileSync(OUTPUTpath, generateHTML(teamArray), 'utf-8');
+    }
+}; 
+
+
+runInquirer();
