@@ -1,0 +1,31 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100&family=Rajdhani:wght@300&family=Trirong:wght@100;200&display=swap');
+* {
+  font-family: "Poppins", sans-serif;
+}
+   
+.jumbotron {
+    font-size: 90px;
+    font-weight: bold;
+    border-radius: 0;
+}
+
+
+
+
+
+.card  {
+    box-shadow: 3px 3px 3px rgb(68, 68, 68);
+    margin: 1px;
+    border: none;
+    color: black;
+}
+
+.card-body {
+    background-color: rgb(190, 188, 188);
+
+}
+
+
+.card-header{
+    color: black;
+}
