@@ -4,7 +4,7 @@
 # testing
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 ## Description
-testing
+# This node.js based web application will render a HTML page with basic information of Employees. When it is cloned and installed properly, all you have to do is follow the prompts to make this web application functional!
 ***
 ## Table of Contents
 * [Installation](#installation)
@@ -39,6 +39,6 @@ Please reach out to me via Github:
 
 
 
-<!-- ## SS: ![](images/team-profile-ss.png) -->
 
-## URL: https://hibo-ali.github.io/Employee-Profile-Generator
+
+## [Url](https://hibo-ali.github.io/Employee-Profile-Generator)
