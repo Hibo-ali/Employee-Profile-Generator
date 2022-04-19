@@ -110,6 +110,8 @@ const employeeQuestionsArray = [
 },
 ];
 
+
+// managers data
 const managersInfo = [];
 
 managersInfo.forEach((manager) => {
@@ -121,3 +123,29 @@ managersInfo.forEach((manager) => {
   );
   managersInfo.push(member);
 });
+
+
+//Filter out Engineers and convert to objects
+// engineers data
+const engineersInfo = employeesInfo.filter(({ role }) => {
+    return role == "Engineer";
+  });
+
+  //engineers array
+  const engineersQuestionsArray = [];
+
+        engineersInfo.forEach((engineer) => {
+          const member = new Engineer(
+            engineer.name,
+            engineer.id,
+            engineer.email,
+            engineer.github
+          );
+          engineersQuestionsArray.push(member);
+        });
+
+
+         //Filter out Engineers and convert to objects
+         const internsInfo = employeesData.filter(({ role }) => {
+            return role == "Intern";
+          });
