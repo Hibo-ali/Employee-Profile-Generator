@@ -20,13 +20,13 @@ function runInquirer() {
     inquirer
       .prompt(employeeQuestionsArray)
       .then(function (answers) {
-        employeesInformation.push(answers);
+        employeesInfo.push(answers);
   
         if (answers.addAnother == "Yes, add another.") {
           runInquirer();
         } else {
           //Filter out Managers and convert to objects
-          const managersInfo = employeesInformation.filter(({ role }) => {
+          const managersInfo = employeesInfo.filter(({ role }) => {
             return role == "Manager";
           });
 
@@ -49,7 +49,7 @@ function validateInput(input) {
 
 
 // EMPLOYEE PROMPTS ARRAYS
-const employeesInformation = [];
+const employeesInfo = [];
 const employeeQuestionsArray = [
   {
     type: "input",
@@ -146,6 +146,7 @@ const engineersInfo = employeesInfo.filter(({ role }) => {
 
 
          //Filter out Engineers and convert to objects
-         const internsInfo = employeesData.filter(({ role }) => {
+         // Interns data
+         const internsInfo = employeesInfo.filter(({ role }) => {
             return role == "Intern";
           });
