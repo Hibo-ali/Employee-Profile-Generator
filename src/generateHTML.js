@@ -1,15 +1,15 @@
 // RENDER html page 
-const generateTeamPage = function (team) {
+const generateTeamPage = function (teamProfile) {
    
    
     // create Manager card
     const generateManagerCard = function (manager) {
         return `
     <div class="col-4 mt-4">
-        <div class="card h-100">
-            <div class="card-header bg-secondary">
-                <h3 class="text-white">${manager.name}</h3>
-                <h4 class="text-white">Manager</h4><i class="fas fa-mug-hot"></i>
+        <div class="card text-info h-100">
+            <div class="card-header bg-info">
+                <h3 class="text-center text-white">${manager.name}</h3>
+                <h4 class="text-center text-white"><i class="fas fa-mug-hot"></i>Manager</h4>
             </div>
             <div class="card-body">
                 <p class="id">ID: ${manager.id}</p>
@@ -26,10 +26,10 @@ const generateTeamPage = function (team) {
      const generateEngineerCard = function (engineer) {
         return `
     <div class="col-4 mt-4">
-        <div class="card h-100">
-            <div class="card-header bg-secondary">
-                <h3 class="text-white">${engineer.name}</h3>
-                <h4 class="text-white">Engineer</h4><i class="fas fa-glasses"></i>
+        <div class="card text-warning h-100">
+            <div class="card-header bg-warning">
+                <h3 class="text-white text-center">${engineer.name}</h3>
+                <h4 class="text-white text-center"><i class="fas fa-glasses"></i>Engineer</h4>
             </div>
             <div class="card-body">
                 <p class="id">ID: ${engineer.id}</p>
@@ -46,10 +46,10 @@ const generateTeamPage = function (team) {
      const generateInternCard = function (intern) {
         return `
     <div class="col-4 mt-4">
-        <div class="card h-100">
-            <div class="card-header bg-secondary">
-                <h3 class="text-white">${intern.name}</h3>
-                <h4 class="text-white">Intern</h4><i class="fas fa-user-graduate"></i>
+        <div class="card text-success h-100">
+            <div class="card-header bg-success">
+                <h3 class="text-white  text-center">${intern.name}</h3>
+                <h4 class="text-white text-center"><i class="fas fa-user-graduate"></i>Intern</h4>
             </div>
             <div class="card-body">
                 <p class="id">ID: ${intern.id}</p>
@@ -61,32 +61,39 @@ const generateTeamPage = function (team) {
     `
     };
 
+
+    
+
     // push array to page 
+   
     const html = [];
     html.push(
-        ...employee 
-        .filter(employee => employee.getRole() === 'Manager')
-            .map(manager => generateManager(manager))
+       
+        teamProfile.filter(employee => employee.getRole() === 'Manager')
+            .map(manager => generateManagerCard(manager))
             .join('')
     )
     html.push(
-        ...employee
-        .filter(employee => employee.getRole() === 'Engineer')
-            .map(engineer => generateEngineer(engineer))
+        
+        teamProfile.filter(employee => employee.getRole() === 'Engineer')
+            .map(engineer => generateEngineerCard(engineer))
             .join('')
     )
     html.push(
-        ...employee
-        .filter(employee => employee.getRole() === 'Intern')
-            .map(intern => generateIntern(intern))
+        
+        teamProfile.filter(employee => employee.getRole() === 'Intern')
+            .map(intern => generateInternCard(intern))
             .join('')
     )
 
     return html.join('')
 }
 
+
+
+
 // export to index
-module.exports = team => {
+module.exports = teamProfile => {
     return `
     <!DOCTYPE html>
 <html lang="en">
@@ -94,16 +101,16 @@ module.exports = team => {
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>My Team</title>
+    <title>Team Profile</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link rel="stylesheet" href="assets/style.css">
+    <link rel="stylesheet" href="/assets/style.css">
     <script src="https://kit.fontawesome.com/c502137733.js"></script>
 </head>
 <body>
     <div class="container-fluid">
         <div class="row">
-            <div class="col-12 jumbotron mb-3 team-heading bg-info">
+            <div class="col-12 jumbotron mb-3 team-heading bg-dark ">
                 <h1 class="text-center text-white">My Team</h1>
             </div>
         </div>
@@ -111,7 +118,7 @@ module.exports = team => {
     <div class="container">
         <div class="row">
             <div class="row team-area col-12 d-flex justify-content-center">
-            ${generateTeamPage(team)}  
+            ${generateTeamPage(teamProfile)}  
             </div>
         </div>
     </div>
