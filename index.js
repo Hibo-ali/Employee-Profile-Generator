@@ -15,20 +15,7 @@ const OUTPUT_DIR = path.resolve(__dirname, "output");
 const OUTPUTpath = path.join(OUTPUT_DIR, "team.html");
 
 
-//INQUIRER
-function runInquirer() {
-    inquirer
-      .prompt(employeeQuestionsArray)
-      .then(function (answers) {
-        employeesInfo.push(answers);
-  
-        if (answers.addAnother == "Yes, add another.") {
-          runInquirer();
-        } else {
-          //Filter out Managers and convert to objects
-          const managersInfo = employeesInfo.filter(({ role }) => {
-            return role == "Manager";
-          });
+
 
 //VALIDATION FUNCTIONS
 function validateInput(input) {
@@ -111,6 +98,22 @@ const employeeQuestionsArray = [
 ];
 
 
+//INQUIRER
+function runInquirer() {
+    inquirer
+      .prompt(employeeQuestionsArray)
+      .then(function (answers) {
+        employeesInfo.push(answers);
+  
+        if (answers.addAnother == "Yes, add another.") {
+          runInquirer();
+        } else {
+          //Filter out Managers and convert to objects
+          const managersInfo = employeesInfo.filter(({ role }) => {
+            return role == "Manager";
+          });
+
+
 // managers array data
 const managersQuestionsArray = [];
 
@@ -180,5 +183,14 @@ const writeFile = () => {
     }
 }; 
 
+ }
 
+
+ 
 runInquirer();
+
+
+
+
+
+

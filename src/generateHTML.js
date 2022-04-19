@@ -42,6 +42,26 @@ const generateTeamPage = function (team) {
     }
 
 
+     // create Intern card 
+     const generateInternCard = function (intern) {
+        return `
+    <div class="col-4 mt-4">
+        <div class="card h-100">
+            <div class="card-header bg-secondary">
+                <h3 class="text-white">${intern.name}</h3>
+                <h4 class="text-white">Intern</h4><i class="fas fa-user-graduate"></i>
+            </div>
+            <div class="card-body">
+                <p class="id">ID: ${intern.id}</p>
+                <p class="email">Email:<a href="mailto:${intern.email}">${intern.email}</a></p>
+                <p class="school">School: ${intern.school}</p>
+            </div>
+    </div>
+</div>
+    `
+    };
+
+
 
 
 
