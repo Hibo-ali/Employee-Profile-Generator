@@ -1,4 +1,4 @@
-# Employee-Generator
+# Employee-Profile-Generator
 
 
 # testing
